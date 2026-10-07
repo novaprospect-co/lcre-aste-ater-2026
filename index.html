@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#da1538">
+  <meta name="description" content="Consulta e confronta i lotti della 57ª asta ATER Roma. Una raccolta informativa indipendente curata da LCRE, con accesso alle fonti ufficiali.">
+  <title>Asta ATER Roma, ottobre 2026 | LCRE</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/leaflet/leaflet.css">
+  <script src="data/properties.js" defer></script>
+  <script src="assets/leaflet/leaflet.js" defer></script>
+  <script src="map.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalogo">Vai ai lotti</a>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <a class="brand" href="#inizio" aria-label="LCRE, inizio pagina"><img src="assets/lcre-logo.png" alt="LCRE" width="1200" height="429"></a>
+      <span class="brand-description">Location Consulting<br>&amp; Real Estate</span>
+      <a class="header-link" href="#informazioni">Informazioni <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="inizio">
+    <section class="hero shell" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <h1 id="page-title">ASTA ATER ROMA, <span>OTTOBRE 2026</span></h1>
+        <h2 class="subtitle">Strumento di consultazione dei lotti</h2>
+        <p class="intro">Una visualizzazione semplificata dei lotti pubblicati nell'ambito della 57ª asta ATER Roma, organizzata per facilitarne la consultazione e il confronto.</p>
+      </div>
+    </section>
+    <section class="catalog shell" id="catalogo" aria-labelledby="catalog-title">
+      <div class="section-heading"><h2 id="catalog-title">I lotti dell'asta</h2></div>
+      <form id="filters" class="filters" aria-label="Filtra i lotti">
+        <div class="filter-heading"><span><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M6 10h8M8 15h4" stroke="currentColor" stroke-width="1.5"/></svg> Filtra la consultazione</span><button type="reset" class="text-button">Azzera filtri <span aria-hidden="true">↺</span></button></div>
+        <div class="filter-grid">
+          <label for="neighborhood">Quartiere<select id="neighborhood" name="neighborhood"><option value="">Tutti i quartieri</option></select></label>
+          <label for="max-price">Prezzo massimo<span class="input-wrap"><input id="max-price" name="maxPrice" type="number" min="0" step="any" inputmode="decimal" placeholder="Nessun limite"><span aria-hidden="true">€</span></span></label>
+          <label for="category">Tipologia<select id="category" name="category"><option value="">Tutte le tipologie</option></select></label>
+          <label for="evaluation">Valutazione<select id="evaluation" name="evaluation"><option value="">Tutte</option></select></label>
+        </div>
+      </form>
+      <section class="map-section" id="map-section" aria-labelledby="map-title">
+        <div class="map-heading"><h3 id="map-title">Mappa dei lotti</h3><span id="map-status"></span></div>
+        <div class="map-frame"><div id="property-map" class="map-canvas" role="region" aria-label="Mappa interattiva dei lotti filtrati"></div><p id="map-empty" class="map-empty" hidden></p></div>
+        <div class="map-tools"><p>Tocca un marker per vedere il lotto. I numeri identificano i singoli lotti.</p><button id="map-interaction" type="button" aria-pressed="false" hidden>Interagisci con la mappa</button></div>
+        <p id="map-tile-message" class="map-message" role="status" hidden></p>
+        <details id="map-review" class="map-review" hidden><summary id="map-review-summary">Indirizzi da verificare</summary><p>Questi lotti restano nei risultati. Sono esclusi dai marker perché la posizione non è stata identificata con certezza.</p><ul id="map-review-list"></ul></details>
+      </section>
+      <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">Caricamento dei lotti…</p><label class="sort-label" for="sort">Ordina per<select id="sort"><option value="evaluation">Valutazione</option><option value="price-asc">Base d'asta: crescente</option><option value="price-desc">Base d'asta: decrescente</option><option value="rate-asc">€/mq: crescente</option><option value="surface-desc">Superficie: decrescente</option><option value="auction-asc">Data asta: crescente</option></select></label></div>
+      <div id="properties" class="property-grid"></div>
+      <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">∅</span><h3>Nessun lotto corrisponde ai filtri</h3><p>Prova ad ampliare i criteri di consultazione.</p><button id="empty-reset" class="solid-button" type="button">Azzera filtri</button></div>
+      <noscript><p class="notice">Per visualizzare i lotti e usare i filtri, abilita JavaScript nel browser. La pagina utilizza solo dati locali.</p></noscript>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="shell">
+      <section class="footer-info" id="informazioni" aria-labelledby="notice-title">
+        <h2 id="notice-title">Informazioni sulla consultazione</h2>
+        <p>Questa pagina riorganizza informazioni pubblicamente disponibili per facilitarne la consultazione. Per documentazione, condizioni e partecipazione all’asta fanno fede esclusivamente le fonti ufficiali.</p>
+        <p>La Valutazione LCRE è un giudizio orientativo basato sulle informazioni disponibili e non costituisce informazione ufficiale ATER.</p>
+      </section>
+      <div class="footer-compact"><span>LCRE · Consultazione indipendente</span><a href="#inizio">Torna all'inizio ↑</a></div>
+    </div>
+  </footer>
+</body>
+</html>
